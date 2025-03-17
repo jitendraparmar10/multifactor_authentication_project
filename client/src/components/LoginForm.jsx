@@ -9,8 +9,21 @@ const LoginForm = () => {
     const [confirmPassword , setConfirmPassword] = useState("");
     const [error , setError] = useState("");
     const [message , setMessage] = useState("");
-    const handleLogin = () =>{
 
+    const handleLogin = async(e) =>{
+        e.preventDefault();
+        try {
+            const {data} = await loginUser(username,password);
+            setIsRegister(false);
+            setMessage(data.message);
+            setUsername("");
+            setPassword("");
+        } catch (error){
+            console.log("The err is :", error.message);
+            setUsername("");
+            setPassword("");
+            setError("Invalid login credintials");
+        }
     }
 
     const handleRegister = async (e) =>{
