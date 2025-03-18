@@ -23,7 +23,7 @@ export const authStatus = async ()=>{
 };
 
 export const logoutUser = async ()=>{
-    return await api.post("/auth/logut",
+    return await api.post("/auth/logout",
     {},
     {
         withCredentials:true,
